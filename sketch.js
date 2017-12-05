@@ -17,6 +17,7 @@
  */
 
 var backgroundImage;
+var backgroundAgeImage;
 var backgroundOverImage;
 var detailInfoImage;
 var items = [];
@@ -33,6 +34,7 @@ var scaleMaxValue;
 // State
 var currentColor;
 var STATE;
+var isMovilityState;
 
 // Font
 var geoMidFont
@@ -51,10 +53,13 @@ var itemsJSON;
  */
 
 function preload() {
-  
+
+  // JSON
   itemsJSON = loadJSON("assets/data/data.json");
 
+  // Backgrund
   backgroundImage = loadImage("assets/images/CDMX_Template.png");
+  backgroundAgeImage = loadImage("assets/images/CDMX_Template_Age.png");
   backgroundOverImage = loadImage("assets/images/CDMX_Template_Over.png");
   detailInfoImage = loadImage("assets/images/CDMX_Template_Icons.png");
 
@@ -62,6 +67,13 @@ function preload() {
     var nameImage = "assets/images/CDMX_Template_" + i + ".png";
     window['img' + i] = loadImage(nameImage);
   }
+  
+  for (var i = 0; i < itemsCount; i++) {
+    var nameImageB = "assets/images/CDMX_Template_B_" + i + ".png";
+    window['imgB' + i] = loadImage(nameImageB);
+  }
+  
+  
 
   for (var i = 0; i < 4; i++) {
     var nameIconImage = "assets/images/CDMX_Template_Icon_" + i + ".png";
@@ -69,6 +81,7 @@ function preload() {
 
   }
 
+  // Fuemtes
   geoMidFont = loadFont('assets/fonts/Geogtq-Md.otf');
   geoSmallFont = loadFont('assets/fonts/Geogtq-Ul.otf');
 
@@ -127,15 +140,17 @@ function initialize() {
 function setState(_state) {
 
   if (_state == "MOVILITY") {
+    isMovilityState = true;
     STATE = "MOVILITY";
-    currentColor = color(167, 225, 234)
+    currentColor = color(167, 225, 234);
     scaleTitle = "#Voluntarios";
     scaleMaxValue = "150";
   } else if (_state == "AGE") {
+    isMovilityState = false;
     STATE = "AGE";
-    currentColor = color(167, 225, 234)
+    currentColor = color(70, 180, 98);
     scaleTitle = "Edad";
-    scaleMaxValue = "50";
+    scaleMaxValue = "60";
   }
 
   updateItemsState(_state);
@@ -157,7 +172,15 @@ function initializeBackground() {
 function drawBackground() {
   var correctionX = (windowWidth / 2) - (backgroundImage.width / 2);
   var correctionY = (windowHeight / 2) - (backgroundImage.height / 2);
-  image(backgroundImage, correctionX, correctionY);
+
+  if (STATE == "MOVILITY") {
+    image(backgroundImage, correctionX, correctionY);
+  } else if (STATE == "AGE") {
+    image(backgroundAgeImage, correctionX, correctionY);
+  }
+
+
+
 }
 
 /**/ ///////////////////////////
@@ -173,7 +196,13 @@ function initializeBackgroundOver() {
 function drawBackgroundOver() {
   var correctionX = (windowWidth / 2) - (backgroundOverImage.width / 2);
   var correctionY = (windowHeight / 2) - (backgroundOverImage.height / 2);
-  image(backgroundOverImage, correctionX, correctionY);
+  if (STATE == "MOVILITY") {
+    image(backgroundOverImage, correctionX, correctionY);
+
+  } else if (STATE == "AGE") {
+    //image(backgroundAgeImage, correctionX, correctionY);
+  }
+
 }
 
 
@@ -188,10 +217,18 @@ function drawBackgroundOver() {
 
 function initializeHeader() {
 
-  headerSubtitle = "¿De dónde venían los voluntarios y qué transporte utilizaban principalmente?"
+
 }
 
 function drawHeader() {
+
+  if (STATE == "MOVILITY") {
+    headerSubtitle = "¿De dónde venían los voluntarios y qué transporte utilizaban principalmente?"
+
+  } else if (STATE == "AGE") {
+    headerSubtitle = "¿Qué edad tenían los voluntarios?"
+  }
+
   textAlign(LEFT, TOP);
   noStroke();
   //Title
@@ -266,9 +303,10 @@ function initializeItems() {
       itemsJSON.data[i].voluntaryNumber,
       itemsJSON.data[i].nameItem,
       window['img' + i],
+      window['imgB' + i],
       detailInfoImage,
       window['imgIcon' + itemsJSON.data[i].mobilityIndex],
-      color(167, 225, 234), itemsJSON.data[i].mobilityArray,itemsJSON.data[i].agesIndex,itemsJSON.data[i].agesArray ));
+      color(167, 225, 234), itemsJSON.data[i].mobilityArray, itemsJSON.data[i].agesIndex, itemsJSON.data[i].agesArray));
 
   }
 
@@ -298,6 +336,20 @@ function updateItemsState(_state) {
  *****************************************
  *****************************************
  */
+
+function keyPressed() {
+  if (keyCode == 32) {
+    // SPACE
+    if (isMovilityState == false) {
+      setState("MOVILITY");
+    } else {
+      setState("AGE");
+    }
+
+  }
+
+  return false;
+}
 
 
 function mouseClicked() {
