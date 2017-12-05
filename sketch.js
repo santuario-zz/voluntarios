@@ -22,6 +22,18 @@ var items = [];
 var itemsCount = 1;
 
 
+// Header
+var headerSubtitle;
+
+// Scale;
+var scaleTitle;
+var scaleMaxValue;
+
+// State
+
+var currentColor;
+
+
 /*
  *****************************************
  *****************************************
@@ -57,6 +69,8 @@ function draw() {
   clear();
   drawBackground();
   drawItems();
+  drawHeader();
+  drawScale();
 
 }
 
@@ -70,9 +84,40 @@ function draw() {
  */
 
 function initialize() {
+
+
   initializeBackground();
   initializeItems();
+  initializeHeader();
+  initializeScale();
+  setState("MOVILITY");
 }
+
+
+/*
+ *****************************************
+ *****************************************
+ * STATE METHODS
+ *****************************************
+ *****************************************
+ */
+
+function setState(_state) {
+
+  if (_state == "MOVILITY") {
+    currentColor = color(167, 225, 234)
+    scaleTitle = "#Voluntarios";
+    scaleMaxValue = "150";
+  } else if (_state == "AGE") {
+    currentColor = color(167, 225, 234)
+    scaleTitle = "Edad";
+    scaleMaxValue = "50";
+  }
+
+  updateItemsState(_state);
+}
+
+
 
 
 /**/ ///////////////////////////
@@ -88,11 +133,78 @@ function initializeBackground() {
 function drawBackground() {
   var correctionX = (windowWidth / 2) - (backgroundImage.width / 2);
   var correctionY = (windowHeight / 2) - (backgroundImage.height / 2);
-  image(backgroundImage,correctionX, correctionY);
+  image(backgroundImage, correctionX, correctionY);
 }
 
 
+/*
+ *****************************************
+ *****************************************
+ * HEADER METHODS
+ *****************************************
+ *****************************************
+ */
 
+
+function initializeHeader() {
+
+  headerSubtitle = "¿De dónde venían los voluntarios y qué transporte utilizaban principalmente?"
+}
+
+function drawHeader() {
+  textAlign(LEFT, TOP);
+  noStroke();
+  //Title
+  textSize(30);
+  text("Verifcado 19S", 30, 20);
+
+  //Subtitle
+  textSize(20);
+  text(headerSubtitle, 30, 60);
+}
+
+
+/**/ ///////////////////////////
+///////////////////////////////
+//////// SCALE METHODS
+///////////////////////////////
+//////////////////////////// */ 
+
+function initializeScale() {
+
+
+}
+
+
+function drawScale() {
+
+  var initialPosX = 30;
+  var initialPosY = 30;
+
+  for (var i = 0; i < 150; i++) {
+    fill(colorAlpha(currentColor, map(i, 0, 150, 1, 0)));
+    rect(initialPosX, windowHeight - 150 - initialPosY + i, 15, 1);
+  }
+
+
+
+
+  //Title
+  fill(0, 255);
+  textSize(10);
+  text(scaleTitle, initialPosX, windowHeight - initialPosY + 3);
+  textAlign(LEFT, BOTTOM);
+  text("0", initialPosX + 15 + 3, windowHeight - initialPosY);
+  textAlign(LEFT, TOP);
+  text(scaleMaxValue, initialPosX + 15 + 3, windowHeight - initialPosY - 150);
+
+
+}
+
+function colorAlpha(aColor, alpha) {
+  var c = color(aColor);
+  return color('rgba(' + [red(c), green(c), blue(c), alpha].join(',') + ')');
+}
 
 
 /*
@@ -122,8 +234,8 @@ function initializeItems() {
 
   for (var i = 0; i < itemsCount; i++) {
     items.push(new Item(i,
-      100,
-      100,
+      -18,
+      182,
       110,
       "Álvaro Obregón",
       window['img' + i],
@@ -140,4 +252,26 @@ function drawItems() {
     items[i].update();
     items[i].display();
   }
+}
+
+
+function updateItemsState(_state) {
+
+  for (var i = 0; i < itemsCount; i++) {
+    items[i].updateState(_state);
+  }
+}
+
+
+/*
+ *****************************************
+ *****************************************
+ * UI METHODS
+ *****************************************
+ *****************************************
+ */
+
+
+function mouseClicked() {
+  print(((windowWidth / 2) - mouseX) + " :: " + mouseX + " , " + ((windowHeight / 2) - mouseY) + " :: " + mouseY);
 }

@@ -53,9 +53,22 @@ function Item(_id, _x, _y, _voluntaryNumber, _nameItem, _img, _imgIcons, _curren
 
   }
 
+  this.updateState = function(_state) {
+
+    if (_state == "MOVILITY") {
+      this.currentColor = color(167, 225, 234)
+    } else if (_state == "AGE") {
+      this.currentColor = color(167, 225, 234)
+    }
+    
+
+  }
+
+
+
+
   this.displayInfo = function() {
-    //textSize(32);
-    text("word", 10, 30);
+
 
 
     var posX = 10;
@@ -75,7 +88,7 @@ function Item(_id, _x, _y, _voluntaryNumber, _nameItem, _img, _imgIcons, _curren
     image(this.imgIcons, windowWidth - posX - 50 - sw, windowHeight - posY + 20, this.imgIcons.width, this.imgIcons.height);
 
 
-    
+
     // Rects Walk
     rect(windowWidth - posX - 50 + 25 - sw, windowHeight - posY + 27, 150, 15);
     // Rects Car
@@ -86,16 +99,17 @@ function Item(_id, _x, _y, _voluntaryNumber, _nameItem, _img, _imgIcons, _curren
     rect(windowWidth - posX - 50 + 25 - sw, windowHeight - posY + 87, 150, 15);
     // Rects Moto
     rect(windowWidth - posX - 50 + 25 - sw, windowHeight - posY + 107, 150, 15);
-    
-    
+
+
     // Scale
     textAlign(RIGHT, CENTER);
     fill(0, 255);
     textSize(10);
-    var s = this.nameItem;
-    text("100%", windowWidth - posX - 50 + 25 - sw +150, windowHeight - posY + 127);
-    
-    
+    text("100%", windowWidth - posX - 50 + 25 - sw + 150, windowHeight - posY + 130);
+    textAlign(LEFT, CENTER);
+    text("FUENTE: Verificado19S", windowWidth - posX - 50 - sw, windowHeight - posY + 140);
+
+
     /*
     // Cluster
      textSize(18);
@@ -110,7 +124,7 @@ function Item(_id, _x, _y, _voluntaryNumber, _nameItem, _img, _imgIcons, _curren
 
     stroke(red(this.currentColor), green(this.currentColor), blue(this.currentColor), 255);
     //Line 
-    line(this.x, this.y, windowWidth - posX - 50 - sw, windowHeight - posY);
+    line(windowWidth/2 - this.x, windowHeight/2 - this.y, windowWidth - posX - 50 - sw, windowHeight - posY);
 
   }
 
