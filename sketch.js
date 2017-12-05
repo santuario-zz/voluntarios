@@ -17,6 +17,7 @@
  */
 
 var backgroundImage;
+var backgroundOverImage;
 var detailInfoImage;
 var items = [];
 var itemsCount = 16;
@@ -31,6 +32,7 @@ var scaleMaxValue;
 
 // State
 var currentColor;
+var STATE;
 
 // Font
 var geoMidFont
@@ -48,6 +50,7 @@ var geoSmallFont;
 function preload() {
 
   backgroundImage = loadImage("assets/images/CDMX_Template.png");
+  backgroundOverImage = loadImage("assets/images/CDMX_Template_Over.png");
   detailInfoImage = loadImage("assets/images/CDMX_Template_Icons.png");
 
   for (var i = 0; i < itemsCount; i++) {
@@ -83,6 +86,7 @@ function draw() {
   drawItems();
   drawHeader();
   drawScale();
+  drawBackgroundOver();
 
 }
 
@@ -99,6 +103,7 @@ function initialize() {
 
 
   initializeBackground();
+  initializeBackgroundOver();
   initializeItems();
   initializeHeader();
   initializeScale();
@@ -117,10 +122,12 @@ function initialize() {
 function setState(_state) {
 
   if (_state == "MOVILITY") {
+    STATE = "MOVILITY";
     currentColor = color(167, 225, 234)
     scaleTitle = "#Voluntarios";
     scaleMaxValue = "150";
   } else if (_state == "AGE") {
+    STATE = "AGE";
     currentColor = color(167, 225, 234)
     scaleTitle = "Edad";
     scaleMaxValue = "50";
@@ -146,6 +153,22 @@ function drawBackground() {
   var correctionX = (windowWidth / 2) - (backgroundImage.width / 2);
   var correctionY = (windowHeight / 2) - (backgroundImage.height / 2);
   image(backgroundImage, correctionX, correctionY);
+}
+
+/**/ ///////////////////////////
+///////////////////////////////
+//////// BACKGROUND METHODS
+///////////////////////////////
+//////////////////////////// */ 
+
+function initializeBackgroundOver() {
+
+}
+
+function drawBackgroundOver() {
+  var correctionX = (windowWidth / 2) - (backgroundOverImage.width / 2);
+  var correctionY = (windowHeight / 2) - (backgroundOverImage.height / 2);
+  image(backgroundOverImage, correctionX, correctionY);
 }
 
 

@@ -32,7 +32,7 @@ function Item(_id, _x, _y, _voluntaryNumber, _nameItem, _img, _imgIcons, _imgIco
    */
 
   this.display = function() {
-    tint(255, this.alphaValue);
+    //tint(255, this.alphaValue);
 
 
     var correctionX = (windowWidth / 2) - (this.img.width / 2);
@@ -44,6 +44,8 @@ function Item(_id, _x, _y, _voluntaryNumber, _nameItem, _img, _imgIcons, _imgIco
 
     if (this.colorAlphaTest(c, 5)) {
       this.displayInfo();
+      //tint(255, 150);
+      this.colorAlpha(this.currentColor,0.5)
       image(this.img, correctionX, correctionY)
     }
 
@@ -145,6 +147,11 @@ function Item(_id, _x, _y, _voluntaryNumber, _nameItem, _img, _imgIcons, _imgIco
     } else {
       return true;
     }
+  }
+
+  this.colorAlpha = function(aColor, alpha) {
+    var c = color(aColor);
+    return color('rgba(' + [red(c), green(c), blue(c), alpha].join(',') + ')');
   }
 
 
