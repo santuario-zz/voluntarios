@@ -19,7 +19,7 @@
 var backgroundImage;
 var detailInfoImage;
 var items = [];
-var itemsCount = 1;
+var itemsCount = 16;
 
 
 // Header
@@ -53,8 +53,10 @@ function preload() {
   for (var i = 0; i < itemsCount; i++) {
     var nameImage = "assets/images/CDMX_Template_" + i + ".png";
     window['img' + i] = loadImage(nameImage);
+    var nameImageB = "assets/images/CDMX_Template_B_" + i + ".png";
+    window['imgB' + i] = loadImage(nameImage);
     var nameIconImage = "assets/images/CDMX_Template_Icon_" + i + ".png";
-    window['imgIcon' + i] = loadImage(nameIconImage);
+    window['imgIcon' + i] = loadImage(nameImage);
   }
   
   geoMidFont = loadFont('assets/fonts/Geogtq-Md.otf');
