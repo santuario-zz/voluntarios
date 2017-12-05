@@ -53,12 +53,14 @@ function preload() {
   for (var i = 0; i < itemsCount; i++) {
     var nameImage = "assets/images/CDMX_Template_" + i + ".png";
     window['img' + i] = loadImage(nameImage);
-    var nameImageB = "assets/images/CDMX_Template_B_" + i + ".png";
-    window['imgB' + i] = loadImage(nameImage);
-    var nameIconImage = "assets/images/CDMX_Template_Icon_" + i + ".png";
-    window['imgIcon' + i] = loadImage(nameImage);
   }
-  
+
+  for (var i = 0; i < 4; i++) {
+    var nameIconImage = "assets/images/CDMX_Template_Icon_" + i + ".png";
+    window['imgIcon' + i] = loadImage(nameIconImage);
+
+  }
+
   geoMidFont = loadFont('assets/fonts/Geogtq-Md.otf');
   geoSmallFont = loadFont('assets/fonts/Geogtq-Ul.otf');
 
@@ -172,7 +174,7 @@ function drawHeader() {
   //Subtitle
   textFont(geoSmallFont);
   textSize(20);
-  text(headerSubtitle, 30, 60,(windowWidth / 2)-50,windowHeight);
+  text(headerSubtitle, 30, 60, (windowWidth / 2) - 50, windowHeight);
 }
 
 
@@ -245,14 +247,13 @@ function initializeItems() {
   }*/
 
   for (var i = 0; i < itemsCount; i++) {
-    items.push(new Item(i,
-      -18,
+    items.push(new Item(i, -18,
       182,
       110,
       "Álvaro Obregón",
       window['img' + i],
       detailInfoImage,
-      window['imgIcon' + i],
+      window['imgIcon' + "0"],
       color(167, 225, 234), [20, 20, 20, 20, 20]));
 
   }

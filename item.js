@@ -39,13 +39,15 @@ function Item(_id, _x, _y, _voluntaryNumber, _nameItem, _img, _imgIcons,_imgIcon
     var correctionY = (windowHeight / 2) - (this.img.height / 2);
     image(this.img, correctionX, correctionY);
     
+    
     var c = this.img.get(mouseX + (correctionX * -1), mouseY + (correctionY * -1));
 
     if (this.colorAlphaTest(c, 5)) {
       this.displayInfo();
     }
     
-    image(this.imgIcon, correctionX, correctionY);
+    
+    image(this.imgIcon, windowWidth/2 - this.x, windowHeight/2 - this.y);
 
 
     
