@@ -1,4 +1,4 @@
-function Item(_id, _x, _y, _voluntaryNumber, _nameItem, _img, _imgIcons, _currentColor, _mobility) {
+function Item(_id, _x, _y, _voluntaryNumber, _nameItem, _img, _imgIcons,_imgIcon, _currentColor, _mobility) {
   /*
    *****************************************
    *****************************************
@@ -14,6 +14,7 @@ function Item(_id, _x, _y, _voluntaryNumber, _nameItem, _img, _imgIcons, _curren
   this.nameItem = _nameItem;
   this.img = _img;
   this.imgIcons = _imgIcons;
+  this.imgIcon = _imgIcon;
   this.currentColor = _currentColor;
   this.mobility = _mobility;
   this.voluntaryMaxNumber = 150;
@@ -37,13 +38,17 @@ function Item(_id, _x, _y, _voluntaryNumber, _nameItem, _img, _imgIcons, _curren
     var correctionX = (windowWidth / 2) - (this.img.width / 2);
     var correctionY = (windowHeight / 2) - (this.img.height / 2);
     image(this.img, correctionX, correctionY);
-
-
+    
     var c = this.img.get(mouseX + (correctionX * -1), mouseY + (correctionY * -1));
 
     if (this.colorAlphaTest(c, 5)) {
       this.displayInfo();
     }
+    
+    image(this.imgIcon, correctionX, correctionY);
+
+
+    
 
 
   }
@@ -74,11 +79,11 @@ function Item(_id, _x, _y, _voluntaryNumber, _nameItem, _img, _imgIcons, _curren
     var posX = 10;
     var posY = 180;
     noStroke();
-    fill(red(this.currentColor), green(this.currentColor), blue(this.currentColor), 255);
 
     textAlign(LEFT, CENTER);
 
     // Name
+    fill(0, 255)
     textSize(24);
     var s = this.nameItem;
     var sw = textWidth(s);
@@ -88,6 +93,7 @@ function Item(_id, _x, _y, _voluntaryNumber, _nameItem, _img, _imgIcons, _curren
     image(this.imgIcons, windowWidth - posX - 50 - sw, windowHeight - posY + 20, this.imgIcons.width, this.imgIcons.height);
 
 
+    fill(red(this.currentColor), green(this.currentColor), blue(this.currentColor), 255);
 
     // Rects Walk
     rect(windowWidth - posX - 50 + 25 - sw, windowHeight - posY + 27, 150, 15);
