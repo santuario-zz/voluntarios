@@ -38,6 +38,9 @@ var STATE;
 var geoMidFont
 var geoSmallFont;
 
+//JSON
+var itemsJSON;
+
 
 /*
  *****************************************
@@ -48,6 +51,8 @@ var geoSmallFont;
  */
 
 function preload() {
+  
+  itemsJSON = loadJSON("assets/data/data.json");
 
   backgroundImage = loadImage("assets/images/CDMX_Template.png");
   backgroundOverImage = loadImage("assets/images/CDMX_Template_Over.png");
@@ -254,30 +259,16 @@ function colorAlpha(aColor, alpha) {
 
 
 function initializeItems() {
-  //itemsJSON.data.length
-  /*
-  canvasW = itemsJSON.data.length * 200 * sizeScale;
-  generalCanvasX = 0;
-  for (var i = 0; i < itemsJSON.data.length; i++) {
-    //var positionX = map(int(itemsJSON.data[i].year), -400, 2020, 0, 2020 * 3);
-    items.push(new Item(200 * i, windowHeight / 2, 100, 100, sizeScale, posX, posY,
-      itemsJSON.data[i].name,
-      itemsJSON.data[i].projectName,
-      itemsJSON.data[i].year,
-      itemsJSON.data[i].link,
-      itemsJSON.data[i].tag,
-      i));
-  }*/
 
   for (var i = 0; i < itemsCount; i++) {
-    items.push(new Item(i, -18,
-      182,
-      110,
-      "Álvaro Obregón",
+    items.push(new Item(itemsJSON.data[i].id, itemsJSON.data[i].x,
+      itemsJSON.data[i].y,
+      itemsJSON.data[i].voluntaryNumber,
+      itemsJSON.data[i].nameItem,
       window['img' + i],
       detailInfoImage,
-      window['imgIcon' + "0"],
-      color(167, 225, 234), [20, 20, 20, 20, 20]));
+      window['imgIcon' + itemsJSON.data[i].mobilityIndex],
+      color(167, 225, 234), itemsJSON.data[i].mobilityArray,itemsJSON.data[i].agesIndex,itemsJSON.data[i].agesArray ));
 
   }
 
@@ -310,5 +301,5 @@ function updateItemsState(_state) {
 
 
 function mouseClicked() {
-  print(((windowWidth / 2) - mouseX) + " :: " + mouseX + " , " + ((windowHeight / 2) - mouseY) + " :: " + mouseY);
+  //print(((windowWidth / 2) - mouseX) + " :: " + mouseX + " , " + ((windowHeight / 2) - mouseY) + " :: " + mouseY);
 }

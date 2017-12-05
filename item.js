@@ -1,4 +1,4 @@
-function Item(_id, _x, _y, _voluntaryNumber, _nameItem, _img, _imgIcons, _imgIcon, _currentColor, _mobility) {
+function Item(_id, _x, _y, _voluntaryNumber, _nameItem, _img, _imgIcons, _imgIcon, _currentColor, _mobility,_agesIndex,_agesArray) {
   /*
    *****************************************
    *****************************************
@@ -17,6 +17,8 @@ function Item(_id, _x, _y, _voluntaryNumber, _nameItem, _img, _imgIcons, _imgIco
   this.imgIcon = _imgIcon;
   this.currentColor = _currentColor;
   this.mobility = _mobility;
+  this.agesIndex = _agesIndex;
+  this.agesArray = _agesArray;
   this.voluntaryMaxNumber = 150;
   this.overBox = false;
   this.alphaValue = alphaValue = (this.voluntaryNumber / this.voluntaryMaxNumber) * 255.0;
@@ -43,10 +45,8 @@ function Item(_id, _x, _y, _voluntaryNumber, _nameItem, _img, _imgIcons, _imgIco
     var c = this.img.get(mouseX + (correctionX * -1), mouseY + (correctionY * -1));
 
     if (this.colorAlphaTest(c, 5)) {
+      image(this.img, correctionX, correctionY);
       this.displayInfo();
-      //tint(255, 150);
-      this.colorAlpha(this.currentColor,0.5)
-      image(this.img, correctionX, correctionY)
     }
 
 
@@ -80,7 +80,7 @@ function Item(_id, _x, _y, _voluntaryNumber, _nameItem, _img, _imgIcons, _imgIco
   this.displayInfo = function() {
 
 
-
+    
     var posX = 10;
     var posY = 180;
     noStroke();
@@ -92,33 +92,43 @@ function Item(_id, _x, _y, _voluntaryNumber, _nameItem, _img, _imgIcons, _imgIco
     textSize(24);
     var s = this.nameItem;
     var sw = textWidth(s);
-    text(s, windowWidth - posX - 50 - sw, windowHeight - posY);
+    //print(sw);
+    var correction;
+    
+    if(sw < 140){
+      correction = 140 - sw;
+    }else{
+      correction = 0;
+    }
+    text(s, windowWidth - posX - 50 - sw - correction, windowHeight - posY);
 
     // Icons
-    image(this.imgIcons, windowWidth - posX - 50 - sw, windowHeight - posY + 20, this.imgIcons.width, this.imgIcons.height);
+    image(this.imgIcons, windowWidth - posX - 50 - sw - correction, windowHeight - posY + 20, this.imgIcons.width, this.imgIcons.height);
 
 
     fill(red(this.currentColor), green(this.currentColor), blue(this.currentColor), 255);
+    
+    var currentdata = this.mobility;
 
     // Rects Walk
-    rect(windowWidth - posX - 50 + 25 - sw, windowHeight - posY + 27, 150, 15);
+    rect(windowWidth - posX - 50 + 25 - sw - correction, windowHeight - posY + 27, map(currentdata[0], 0, this.voluntaryNumber, 0, 150), 15);
     // Rects Car
-    rect(windowWidth - posX - 50 + 25 - sw, windowHeight - posY + 47, 150, 15);
+    rect(windowWidth - posX - 50 + 25 - sw - correction, windowHeight - posY + 47, map(currentdata[1], 0, this.voluntaryNumber, 0, 150), 15);
     // Rects Bicy
-    rect(windowWidth - posX - 50 + 25 - sw, windowHeight - posY + 67, 150, 15);
+    rect(windowWidth - posX - 50 + 25 - sw - correction, windowHeight - posY + 67, map(currentdata[2], 0, this.voluntaryNumber, 0, 150), 15);
     // Rects Metro
-    rect(windowWidth - posX - 50 + 25 - sw, windowHeight - posY + 87, 150, 15);
+    rect(windowWidth - posX - 50 + 25 - sw - correction, windowHeight - posY + 87, map(currentdata[3], 0, this.voluntaryNumber, 0, 150), 15);
     // Rects Moto
-    rect(windowWidth - posX - 50 + 25 - sw, windowHeight - posY + 107, 150, 15);
+    rect(windowWidth - posX - 50 + 25 - sw - correction, windowHeight - posY + 107, map(currentdata[4], 0, this.voluntaryNumber, 0, 150), 15);
 
 
     // Scale
     textAlign(RIGHT, CENTER);
     fill(0, 255);
     textSize(10);
-    text("100%", windowWidth - posX - 50 + 25 - sw + 150, windowHeight - posY + 130);
+    text("100%", windowWidth - posX - 50 + 25 - sw - correction + 150, windowHeight - posY + 130);
     textAlign(LEFT, CENTER);
-    text("FUENTE: Verificado19S", windowWidth - posX - 50 - sw, windowHeight - posY + 140);
+    text("FUENTE: Verificado19S", windowWidth - posX - 50 - sw - correction, windowHeight - posY + 140);
 
 
     /*
@@ -135,7 +145,7 @@ function Item(_id, _x, _y, _voluntaryNumber, _nameItem, _img, _imgIcons, _imgIco
 
     stroke(red(this.currentColor), green(this.currentColor), blue(this.currentColor), 255);
     //Line 
-    line(windowWidth / 2 - this.x, windowHeight / 2 - this.y, windowWidth - posX - 50 - sw, windowHeight - posY);
+    line(windowWidth / 2 - this.x, windowHeight / 2 - this.y, windowWidth - posX - 50 - sw - correction, windowHeight - posY);
 
   }
 

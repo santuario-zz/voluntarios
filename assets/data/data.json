@@ -1,0 +1,178 @@
+{ "data":[
+  {
+    "id": 0,
+    "x": -18,
+    "y": 182,
+    "voluntaryNumber": 110,
+    "nameItem": "Gustavo A. Madero",
+    "mobilityIndex": 0,
+    "mobilityArray": [20, 20, 20, 20, 20],
+    "agesIndex": 0,
+    "agesArray":[20, 20, 20, 20, 20]
+  },
+  {
+    "id": 1,
+    "x": 57,
+    "y": 168,
+    "voluntaryNumber": 110,
+    "nameItem": "Azcapotzalco",
+    "mobilityIndex": 0,
+    "mobilityArray": [20, 20, 20, 20, 20],
+    "agesIndex": 0,
+    "agesArray":[20, 20, 20, 20, 20]
+  },
+  {
+    "id": 2,
+    "x": 80,
+    "y": 100,
+    "voluntaryNumber": 110,
+    "nameItem": "Miguel Hidalgo",
+    "mobilityIndex": 0,
+    "mobilityArray": [20, 20, 20, 20, 20],
+    "agesIndex": 0,
+    "agesArray":[20, 20, 20, 20, 20]
+  },
+  {
+    "id": 3,
+    "x": 20,
+    "y": 103,
+    "voluntaryNumber": 110,
+    "nameItem": "Cuauhtémoc",
+    "mobilityIndex": 0,
+    "mobilityArray": [20, 20, 20, 20, 20],
+    "agesIndex": 0,
+    "agesArray":[20, 20, 20, 20, 20]
+  },
+  {
+    "id": 4,
+    "x": -45,
+    "y": 101,
+    "voluntaryNumber": 110,
+    "nameItem": "Venustiano Carranza",
+    "mobilityIndex": 0,
+    "mobilityArray": [20, 20, 20, 20, 20],
+    "agesIndex": 0,
+    "agesArray":[20, 20, 20, 20, 20]
+  },
+  {
+    "id": 5,
+    "x": 122,
+    "y": 3,
+    "voluntaryNumber": 110,
+    "nameItem": "Álvaro Obregón",
+    "mobilityIndex": 0,
+    "mobilityArray": [20, 20, 20, 20, 20],
+    "agesIndex": 0,
+    "agesArray":[20, 20, 20, 20, 20]
+  },
+  {
+    "id": 6,
+    "x": 209,
+    "y": -30,
+    "voluntaryNumber": 110,
+    "nameItem": "Cuajimalpa",
+    "mobilityIndex": 0,
+    "mobilityArray": [20, 20, 20, 20, 20],
+    "agesIndex": 0,
+    "agesArray":[20, 20, 20, 20, 20]
+  },
+  {
+    "id": 7,
+    "x": 35,
+    "y": 40,
+    "voluntaryNumber": 110,
+    "nameItem": "Benito Juárez",
+    "mobilityIndex": 0,
+    "mobilityArray": [20, 20, 20, 20, 20],
+    "agesIndex": 0,
+    "agesArray":[20, 20, 20, 20, 20]
+  },
+  {
+    "id": 8,
+    "x": -39,
+    "y": 60,
+    "voluntaryNumber": 110,
+    "nameItem": "Iztacalco",
+    "mobilityIndex": 0,
+    "mobilityArray": [20, 20, 20, 20, 20],
+    "agesIndex": 0,
+    "agesArray":[20, 20, 20, 20, 20]
+  },
+  {
+    "id": 9,
+    "x": 149,
+    "y": -93,
+    "voluntaryNumber": 110,
+    "nameItem": "Magdalena Contreras",
+    "mobilityIndex": 0,
+    "mobilityArray": [20, 20, 20, 20, 20],
+    "agesIndex": 0,
+    "agesArray":[20, 20, 20, 20, 20]
+  },
+  {
+    "id": 10,
+    "x": 21,
+    "y": -20,
+    "voluntaryNumber": 110,
+    "nameItem": "Coyoacán",
+    "mobilityIndex": 0,
+    "mobilityArray": [20, 20, 20, 20, 20],
+    "agesIndex": 0,
+    "agesArray":[20, 20, 20, 20, 20]
+  },
+  {
+    "id": 11,
+    "x": -88,
+    "y": 5,
+    "voluntaryNumber": 110,
+    "nameItem": "Iztapalapa",
+    "mobilityIndex": 0,
+    "mobilityArray": [20, 20, 20, 20, 20],
+    "agesIndex": 0,
+    "agesArray":[20, 20, 20, 20, 20]
+  },
+  {
+    "id": 12,
+    "x": 80,
+    "y": -161,
+    "voluntaryNumber": 110,
+    "nameItem": "Tlalpan",
+    "mobilityIndex": 0,
+    "mobilityArray": [20, 20, 20, 20, 20],
+    "agesIndex": 0,
+    "agesArray":[20, 20, 20, 20, 20]
+  },
+  {
+    "id": 13,
+    "x": -50,
+    "y": -108,
+    "voluntaryNumber": 110,
+    "nameItem": "Xochimilco",
+    "mobilityIndex": 0,
+    "mobilityArray": [20, 20, 20, 20, 20],
+    "agesIndex": 0,
+    "agesArray":[20, 20, 20, 20, 20]
+  },
+  {
+    "id": 14,
+    "x": -155,
+    "y": -85,
+    "voluntaryNumber": 110,
+    "nameItem": "Tláhuac",
+    "mobilityIndex": 0,
+    "mobilityArray": [20, 20, 20, 20, 20],
+    "agesIndex": 0,
+    "agesArray":[20, 20, 20, 20, 20]
+  },
+  {
+    "id": 15,
+    "x": -102,
+    "y": -233,
+    "voluntaryNumber": 110,
+    "nameItem": "Milpa Alta",
+    "mobilityIndex": 0,
+    "mobilityArray": [20, 20, 20, 20, 20],
+    "agesIndex": 0,
+    "agesArray":[20, 20, 20, 20, 20]
+  }
+]}
