@@ -1,4 +1,4 @@
-function Item(_id, _x, _y, _voluntaryNumber, _nameItem, _img, _imgIcons,_imgIcon, _currentColor, _mobility) {
+function Item(_id, _x, _y, _voluntaryNumber, _nameItem, _img, _imgIcons, _imgIcon, _currentColor, _mobility) {
   /*
    *****************************************
    *****************************************
@@ -37,20 +37,21 @@ function Item(_id, _x, _y, _voluntaryNumber, _nameItem, _img, _imgIcons,_imgIcon
 
     var correctionX = (windowWidth / 2) - (this.img.width / 2);
     var correctionY = (windowHeight / 2) - (this.img.height / 2);
-    image(this.img, correctionX, correctionY);
-    
-    
+    //image(this.img, correctionX, correctionY);
+
+
     var c = this.img.get(mouseX + (correctionX * -1), mouseY + (correctionY * -1));
 
     if (this.colorAlphaTest(c, 5)) {
       this.displayInfo();
+      image(this.img, correctionX, correctionY)
     }
-    
-    
-    image(this.imgIcon, windowWidth/2 - this.x, windowHeight/2 - this.y);
 
 
-    
+    // image(this.imgIcon, windowWidth/2 - this.x, windowHeight/2 - this.y);
+
+
+
 
 
   }
@@ -67,7 +68,7 @@ function Item(_id, _x, _y, _voluntaryNumber, _nameItem, _img, _imgIcons,_imgIcon
     } else if (_state == "AGE") {
       this.currentColor = color(167, 225, 234)
     }
-    
+
 
   }
 
@@ -132,7 +133,7 @@ function Item(_id, _x, _y, _voluntaryNumber, _nameItem, _img, _imgIcons,_imgIcon
 
     stroke(red(this.currentColor), green(this.currentColor), blue(this.currentColor), 255);
     //Line 
-    line(windowWidth/2 - this.x, windowHeight/2 - this.y, windowWidth - posX - 50 - sw, windowHeight - posY);
+    line(windowWidth / 2 - this.x, windowHeight / 2 - this.y, windowWidth - posX - 50 - sw, windowHeight - posY);
 
   }
 
